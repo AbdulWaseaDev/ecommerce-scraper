@@ -22,9 +22,9 @@ class EcommerceScraper:
         products = []
 
         # Example selectors (you must customize these for the target website)
-        for product in soup.select(".product-item"):
-            title = product.select_one(".product-title")
-            price = product.select_one(".price")
+        for product in soup.select(".inventory_item"):
+            title = product.select_one(".inventory_item_name")
+            price = product.select_one(".inventory_item_price")
             review = product.select_one(".review-rating")
 
             products.append({
@@ -45,9 +45,9 @@ class EcommerceScraper:
 # --- USAGE ---
 if __name__ == "__main__":
     # Example site (change this to the actual product list page)
-    url = "https://example.com/products"
+    url = "https://www.saucedemo.com/inventory.html"
 
-    scraper = EcommerceScraper(base_url="https://example.com")
+    scraper = EcommerceScraper(base_url="https://www.saucedemo.com")
     products = scraper.scrape(url)
 
     for i, product in enumerate(products, 1):
